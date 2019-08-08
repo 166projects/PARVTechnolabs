@@ -34,11 +34,60 @@ public class InterviewSchedule implements Serializable{
 	@Column(nullable=false)
 	private String interviewStatus;
 	
-	
-	
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Candidate candidate;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employer employer;
+	
+	
+	public String getInterviewId() {
+		return interviewId;
+	}
+	public void setInterviewId(String interviewId) {
+		this.interviewId = interviewId;
+	}
+	public Date getInterviewDate() {
+		return interviewDate;
+	}
+	public void setInterviewDate(Date interviewDate) {
+		this.interviewDate = interviewDate;
+	}
+	public String getInterviewType() {
+		return interviewType;
+	}
+	public void setInterviewType(String interviewType) {
+		this.interviewType = interviewType;
+	}
+	public int getRating() {
+		return rating;
+	}
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	public String getFeedback() {
+		return feedback;
+	}
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+	public String getInterviewStatus() {
+		return interviewStatus;
+	}
+	public void setInterviewStatus(String interviewStatus) {
+		this.interviewStatus = interviewStatus;
+	}
+	public Candidate getCandidate() {
+		return candidate;
+	}
+	public void setCandidate(Candidate candidate) {
+		this.candidate = candidate;
+	}
+	public Employer getEmployer() {
+		return employer;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	
+	
 }
