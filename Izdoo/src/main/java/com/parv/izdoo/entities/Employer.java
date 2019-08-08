@@ -15,9 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Employer implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -103,6 +101,5 @@ public class Employer implements Serializable{
 				+ ", leaves=" + leaves + "]";
 	}
 	
-	
-	
+
 }

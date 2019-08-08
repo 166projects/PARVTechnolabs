@@ -3,6 +3,7 @@ package com.parv.izdoo.bos;
 import java.util.List;
 
 import com.parv.izdoo.entities.Leaves;
+import com.parv.izdoo.exceptions.BusinessException;
 
 public interface LeavesBo {
    

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.parv.izdoo.daos.LeavesDao;
 import com.parv.izdoo.entities.Leaves;
+import com.parv.izdoo.exceptions.BusinessException;
 
 @Service
 public class LeavesBoImp implements LeavesBo {
@@ -26,9 +27,11 @@ public class LeavesBoImp implements LeavesBo {
 
 	}
 
-	public void updateLeave(Leaves leave) {
+	public void updateLeave(Leaves leave){
 		if(leave.getLeaveDate().after(new Date())){
-			leavedao.updateLeave(leave);
+			{
+				leavedao.updateLeave(leave);
+			}
 		}
 		else
 		{
