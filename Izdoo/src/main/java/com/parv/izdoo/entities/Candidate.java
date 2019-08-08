@@ -18,14 +18,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table
 public class Candidate implements Serializable {
 	
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private String candidateId;
-	
 	@Column(nullable=false)
 	private String firstName;
 	@Column(nullable=false)
@@ -35,7 +32,7 @@ public class Candidate implements Serializable {
 	@Column(nullable=false)
 	private String password;
 	@Column(nullable=false)
-	private long idProof;
+	private String idProof;
 	@Column(nullable=false)
 	private String primarySkills;
 	private String secondarySkills;
@@ -44,9 +41,90 @@ public class Candidate implements Serializable {
 	@Column(nullable=false)
 	private String designation;
 	@Column(nullable=false)
-	private int noticePeriod;		//in days 
-	
+	private int noticePeriod;		
 	@OneToMany(mappedBy="candidate",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<InterviewSchedule> interviewSchedules;
+	public String getCandidateId() {
+		return candidateId;
+	}
+	public void setCandidateId(String candidateId) {
+		this.candidateId = candidateId;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getIdProof() {
+		return idProof;
+	}
+	public void setIdProof(String idProof) {
+		this.idProof = idProof;
+	}
+	public String getPrimarySkills() {
+		return primarySkills;
+	}
+	public void setPrimarySkills(String primarySkills) {
+		this.primarySkills = primarySkills;
+	}
+	public String getSecondarySkills() {
+		return secondarySkills;
+	}
+	public void setSecondarySkills(String secondarySkills) {
+		this.secondarySkills = secondarySkills;
+	}
+	public double getExperience() {
+		return experience;
+	}
+	public void setExperience(double experience) {
+		this.experience = experience;
+	}
+	public String getDesignation() {
+		return designation;
+	}
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+	public int getNoticePeriod() {
+		return noticePeriod;
+	}
+	public void setNoticePeriod(int noticePeriod) {
+		this.noticePeriod = noticePeriod;
+	}
+	public List<InterviewSchedule> getInterviewSchedules() {
+		return interviewSchedules;
+	}
+	public void setInterviewSchedules(List<InterviewSchedule> interviewSchedules) {
+		this.interviewSchedules = interviewSchedules;
+	}
+	@Override
+	public String toString() {
+		return "Candidate [candidateId=" + candidateId + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", password=" + password + ", idProof=" + idProof + ", primarySkills="
+				+ primarySkills + ", secondarySkills=" + secondarySkills + ", experience=" + experience
+				+ ", designation=" + designation + ", noticePeriod=" + noticePeriod + ", interviewSchedules="
+				+ interviewSchedules + "]";
+	}
+	
+	
 }
