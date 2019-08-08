@@ -1,7 +1,5 @@
 package com.parv.izdoo.bos;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class LeavesBoImp implements LeavesBo {
 
 	}
 
-	public void updateLeave(Leaves leave){
+	public void updateLeave(Leaves leave) throws BusinessException{
 		if(leave.getLeaveDate().after(new Date())){
 			{
 				leavedao.updateLeave(leave);
@@ -35,7 +33,7 @@ public class LeavesBoImp implements LeavesBo {
 		}
 		else
 		{
-			System.out.println("DATA INVALID");
+			throw new BusinessException("DATA INVALID");
 		}
 		
 	}
