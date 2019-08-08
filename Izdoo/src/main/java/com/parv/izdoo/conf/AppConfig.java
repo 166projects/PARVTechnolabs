@@ -6,7 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -44,7 +43,8 @@ public class AppConfig {
 		props.put("hibernate.hbm2ddl.auto", "update");
 		props.put("hibernate.show_sql", "true");
 		props.put("hibernate.format_sql", "true");
-		props.put("hibernate.default_schema", "parv");
+		//props.put("hibernate.default_schema", "parv");
+
 		sessionFactory.setHibernateProperties(props);
 		sessionFactory.setPackagesToScan("com.parv.izdoo.entities");
 
