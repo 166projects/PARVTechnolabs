@@ -38,6 +38,17 @@ public class Employer implements Serializable{
 	@JsonIgnore
 	private List<Leaves> leaves;
 
+
+	
+
+
+	@Override
+	public String toString() {
+		return "Employer [employerId=" + employerId + ", name=" + name + ", skills=" + skills + ", experience="
+				+ experience + ", designation=" + designation + ", interviewschedules=" + interviewschedules
+				+ ", leaves=" + leaves + "]";
+	}
+
 	public String getEmployerId() {
 		return employerId;
 	}
@@ -93,13 +104,5 @@ public class Employer implements Serializable{
 	public void setLeaves(List<Leaves> leaves) {
 		this.leaves = leaves;
 	}
-
-	@Override
-	public String toString() {
-		return "Employer [employerId=" + employerId + ", name=" + name + ", skills=" + skills + ", experience="
-				+ experience + ", designation=" + designation + ", interviewschedules=" + interviewschedules
-				+ ", leaves=" + leaves + "]";
-	}
-	
 
 }
