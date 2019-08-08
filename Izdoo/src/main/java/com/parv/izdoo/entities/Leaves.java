@@ -37,5 +37,40 @@ public class Leaves implements Serializable{
 	private String reason;
 	@Column(nullable=false)
 	private String leaveApproval;
+	public int getLeaveId() {
+		return leaveId;
+	}
+	public void setLeaveId(int leaveId) {
+		this.leaveId = leaveId;
+	}
+	public Employer getEmployer() {
+		return employer;
+	}
+	public void setEmployer(Employer employer) {
+		this.employer = employer;
+	}
+	public Date getLeaveDate() {
+		return leaveDate;
+	}
+	public void setLeaveDate(Date leaveDate) {
+		this.leaveDate = leaveDate;
+	}
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getLeaveApproval() {
+		return leaveApproval;
+	}
+	public void setLeaveApproval(String leaveApproval) {
+		this.leaveApproval = leaveApproval;
+	}
+	@Override
+	public String toString() {
+		return "Leaves [leaveId=" + leaveId + ", employer=" + employer + ", leaveDate=" + leaveDate + ", reason="
+				+ reason + ", leaveApproval=" + leaveApproval + "]";
+	}
 	
 }

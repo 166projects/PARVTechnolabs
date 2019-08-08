@@ -39,6 +39,69 @@ public class Employer implements Serializable{
 	@OneToMany(mappedBy="employer",cascade=CascadeType.ALL,fetch=FetchType.LAZY)
 	@JsonIgnore
 	private List<Leaves> leaves;
+
+	public String getEmployerId() {
+		return employerId;
+	}
+
+	public void setEmployerId(String employerId) {
+		this.employerId = employerId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSkills() {
+		return skills;
+	}
+
+	public void setSkills(String skills) {
+		this.skills = skills;
+	}
+
+	public double getExperience() {
+		return experience;
+	}
+
+	public void setExperience(double experience) {
+		this.experience = experience;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public List<InterviewSchedule> getInterviewschedules() {
+		return interviewschedules;
+	}
+
+	public void setInterviewschedules(List<InterviewSchedule> interviewschedules) {
+		this.interviewschedules = interviewschedules;
+	}
+
+	public List<Leaves> getLeaves() {
+		return leaves;
+	}
+
+	public void setLeaves(List<Leaves> leaves) {
+		this.leaves = leaves;
+	}
+
+	@Override
+	public String toString() {
+		return "Employer [employerId=" + employerId + ", name=" + name + ", skills=" + skills + ", experience="
+				+ experience + ", designation=" + designation + ", interviewschedules=" + interviewschedules
+				+ ", leaves=" + leaves + "]";
+	}
 	
 	
 	
