@@ -25,21 +25,19 @@ public class LeavesBoImp implements LeavesBo {
 
 	}
 
-	public void updateLeave(Leaves leave) throws BusinessException{
-		if(leave.getLeaveDate().after(new Date())){
+	public void updateLeave(Leaves leave) throws BusinessException {
+		if (leave.getLeaveDate().after(new Date())) {
 			{
 				leavedao.updateLeave(leave);
 			}
-		}
-		else
-		{
+		} else {
 			throw new BusinessException("DATA INVALID");
 		}
-		
+
 	}
 
-	public List<Leaves> getAll() {
-		return leavedao.getAll();
+	public List<Leaves> getAllLeaves() {
+		return leavedao.getAllLeaves();
 	}
 
 	public Leaves getById(int leaveId) {
