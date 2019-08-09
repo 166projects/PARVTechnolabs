@@ -63,6 +63,15 @@ public class CandidateBoImp implements CandidateBo {
 			throw new Exception("Invalid email or password");
 		} 
 			return candidates;
-		} 
+		}
+
+	
+	public List<Candidate> getAllEligibleCandidates() {
+		return candidateDao.getAllEligibleCandidates();
+	}
+
+	public Candidate getById(String candidateId) {
+		return candidateDao.getById(candidateId);
+	} 
 
 }
