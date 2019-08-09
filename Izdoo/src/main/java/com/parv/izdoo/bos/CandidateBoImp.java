@@ -65,9 +65,13 @@ public class CandidateBoImp implements CandidateBo {
 			return candidates;
 		}
 
-	@Override
+	
 	public List<Candidate> getAllEligibleCandidates() {
 		return candidateDao.getAllEligibleCandidates();
+	}
+
+	public Candidate getById(String candidateId) {
+		return candidateDao.getById(candidateId);
 	} 
 
 }

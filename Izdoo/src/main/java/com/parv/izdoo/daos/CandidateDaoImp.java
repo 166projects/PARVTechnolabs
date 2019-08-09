@@ -65,12 +65,17 @@ public class CandidateDaoImp implements CandidateDao{
         return candidates;
  }
 
-	@Override
 	public List<Candidate> getAllEligibleCandidates() {
 		Session session = sessionFactory.openSession();
 		List<Candidate> candidates= session.createQuery("from Candidate where eligibility = 'eligible'").list();
 		
 		return candidates;
+	}
+
+	public Candidate getById(String candidateId) {
+		Session session = sessionFactory.openSession();
+		Candidate candidate = (Candidate) session.get(Candidate.class, candidateId);
+		return candidate;
 	}
 		
 		

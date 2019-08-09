@@ -34,7 +34,8 @@ public class InterviewScheduleBoImpl implements InterviewScheduleBo{
 	}
 
 	public List<InterviewSchedule> getInterviewByType(String interviewType) {
-		return interviewScheduleDao.getInterviewByType(interviewType);
+		List<InterviewSchedule> interviewSchedules =interviewScheduleDao.getInterviewByType(interviewType);
+		return interviewSchedules;
 	}
 
 	public InterviewSchedule getById(String interviewId) {
@@ -45,7 +46,6 @@ public class InterviewScheduleBoImpl implements InterviewScheduleBo{
 		return interviewScheduleDao.getByCandidateId(candidateId);
 	}
 
-	@Override
 	public List<InterviewSchedule> getAllInterviewSchedules() {
 		return interviewScheduleDao.getAllInterviewSchedules();
 	}

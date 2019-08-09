@@ -122,14 +122,11 @@ public class Candidate implements Serializable {
 	public void setInterviewSchedules(List<InterviewSchedule> interviewSchedules) {
 		this.interviewSchedules = interviewSchedules;
 	}
-	@Override
-	public String toString() {
-		return "Candidate [candidateId=" + candidateId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", password=" + password + ", idProof=" + idProof + ", primarySkills="
-				+ primarySkills + ", secondarySkills=" + secondarySkills + ", experience=" + experience
-				+ ", designation=" + designation + ", noticePeriod=" + noticePeriod + ", interviewSchedules="
-				+ interviewSchedules + "]";
+	public String getEligibility() {
+		return eligibility;
 	}
-	
+	public void setEligibility(String eligibility) {
+		this.eligibility = eligibility;
+	}
 	
 }
