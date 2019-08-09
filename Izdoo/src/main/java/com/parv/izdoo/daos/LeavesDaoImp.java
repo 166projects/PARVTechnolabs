@@ -48,7 +48,7 @@ public class LeavesDaoImp implements LeavesDao {
 		
 	}
 
-	public List<Leaves> getAll() {
+	public List<Leaves> getAllLeaves() {
 		List<Leaves> leaves=null;
 		Session session=sessionFactory.openSession();
 		Transaction tr=session.beginTransaction();

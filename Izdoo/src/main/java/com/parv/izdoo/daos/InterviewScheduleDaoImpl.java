@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.parv.izdoo.entities.Candidate;
 import com.parv.izdoo.entities.InterviewSchedule;
 
 @Repository
@@ -55,6 +56,13 @@ public class InterviewScheduleDaoImpl implements InterviewScheduleDao {
 		Session session = sessionFactory.openSession();
 		List<InterviewSchedule> interviewSchedules =
 										(List<InterviewSchedule>) session.get(InterviewSchedule.class, candidateId);
+		return interviewSchedules;
+	}
+	
+	public List<InterviewSchedule> getAllInterviewSchedules() {
+		Session session=sessionFactory.openSession();
+		List<InterviewSchedule> interviewSchedules = session.createCriteria(InterviewSchedule.class).list();
+		session.close();
 		return interviewSchedules;
 	}
 

@@ -14,4 +14,6 @@ public interface InterviewScheduleDao {
 	public InterviewSchedule getById(String interviewId);
 	
 	public List<InterviewSchedule> getByCandidateId(String candidateId);
+	
+	public List<InterviewSchedule> getAllInterviewSchedules();
 }

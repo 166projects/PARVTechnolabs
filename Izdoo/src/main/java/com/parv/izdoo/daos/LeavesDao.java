@@ -11,6 +11,6 @@ public interface LeavesDao {
     public void addLeave(Leaves leave);
     public void cancelLeave(int leaveId);
     public void updateLeave(Leaves leave);
-    public List<Leaves> getAll();
+    public List<Leaves> getAllLeaves();
     public Leaves getById(int leaveId);
 }

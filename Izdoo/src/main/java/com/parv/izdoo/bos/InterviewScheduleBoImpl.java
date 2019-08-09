@@ -45,4 +45,9 @@ public class InterviewScheduleBoImpl implements InterviewScheduleBo{
 		return interviewScheduleDao.getByCandidateId(candidateId);
 	}
 
+	@Override
+	public List<InterviewSchedule> getAllInterviewSchedules() {
+		return interviewScheduleDao.getAllInterviewSchedules();
+	}
+
 }
