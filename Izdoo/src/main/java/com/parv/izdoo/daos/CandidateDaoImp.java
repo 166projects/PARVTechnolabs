@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.parv.izdoo.entities.Candidate;
+
 @Repository
-@Transactional
 public class CandidateDaoImp implements CandidateDao{
     
 	 @Autowired
@@ -33,16 +33,18 @@ public class CandidateDaoImp implements CandidateDao{
 
 	public void updateCandidate(Candidate candidate) {
 		Session session=sessionFactory.openSession();
-	
+		Transaction tr = session.beginTransaction();
 		session.update(candidate);
+		tr.commit();
 		session.close();
 	}
 
 	public void signupCandidate(Candidate candidate) {
 	
 		Session session=sessionFactory.openSession();
-		
+		Transaction tr = session.beginTransaction();
 		session.save(candidate);
+		tr.commit(); 
 		session.close();
 		
 	}

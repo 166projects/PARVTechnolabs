@@ -32,7 +32,7 @@ public class Candidate implements Serializable {
 	@Column(nullable=false)
 	private String email;
 	@Column(nullable=false)
-	private String password;
+	private String cpassword;
 	@Column(nullable=false)
 	private String idProof;
 	@Column(nullable=false)
@@ -44,7 +44,7 @@ public class Candidate implements Serializable {
 	private String designation;
 	@Column(nullable=false)
 	private int noticePeriod;
-	@ColumnDefault(value ="eligible")
+//	@ColumnDefault(value ="eligible")
 	private String eligibility;
 	
 	@OneToMany(mappedBy="candidate",cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -75,10 +75,10 @@ public class Candidate implements Serializable {
 		this.email = email;
 	}
 	public String getPassword() {
-		return password;
+		return cpassword;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.cpassword = password;
 	}
 	public String getIdProof() {
 		return idProof;
