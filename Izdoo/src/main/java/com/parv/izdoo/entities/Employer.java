@@ -7,10 +7,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.GenericGenerator;
+
+ 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.parv.izdoo.util.StringPrefixedSequenceIdGenerator;
 
 
 @Entity
@@ -19,6 +26,16 @@ public class Employer implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
+    @Column(nullable=false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prav_seq")
+    @GenericGenerator(
+             name = "prav_seq",
+             strategy = "com.parv.izdoo.util.StringPrefixedSequenceIdGenerator",
+             parameters = {
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "EM00"),
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%02d")})
+    
 	private String employerId;
 	
 	@Column(nullable=false)
@@ -38,13 +55,7 @@ public class Employer implements Serializable{
 	@JsonIgnore
 	private List<Leaves> leaves;
 	
-	@Override
-	public String toString() {
-		return "Employer [employerId=" + employerId + ", name=" + name + ", skills=" + skills + ", experience="
-				+ experience + ", designation=" + designation + ", interviewschedules=" + interviewschedules
-				+ ", leaves=" + leaves + "]";
-	}
-
+	
 	public String getEmployerId() {
 		return employerId;
 	}

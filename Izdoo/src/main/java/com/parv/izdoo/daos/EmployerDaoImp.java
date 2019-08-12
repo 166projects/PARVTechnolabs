@@ -48,6 +48,16 @@ public class EmployerDaoImp implements EmployerDao {
 		return employer;
 	}
 
+	@Override
+	public void addEmployer(Employer employer) {
+		Session session=sessionFactory.openSession();
+		Transaction tr=session.beginTransaction();
+		session.save(employer);
+		tr.commit();
+		session.close();
+		
+	}
+
 	
 
 }

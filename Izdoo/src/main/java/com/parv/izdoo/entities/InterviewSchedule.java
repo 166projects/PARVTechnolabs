@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 
 @Entity
 @Table
@@ -23,6 +26,7 @@ public class InterviewSchedule implements Serializable, Comparable<InterviewSche
 	private String interviewId;
 	
 	@Column(nullable=false)
+	@JsonFormat(pattern="dd-MMM-yy")
 	private Date interviewDate;
 
 	@Column(nullable=false)

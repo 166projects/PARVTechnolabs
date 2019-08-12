@@ -7,13 +7,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.parv.izdoo.util.StringPrefixedSequenceIdGenerator;
 
 
 @Entity
@@ -24,6 +29,15 @@ public class Candidate implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(nullable=false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "candidate_seq")
+    @GenericGenerator(
+             name = "candidate_seq",
+             strategy = "com.parv.izdoo.util.StringPrefixedSequenceIdGenerator",
+             parameters = {
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.INCREMENT_PARAM, value = "1"),
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER, value = "CD00"),
+                       @Parameter(name = StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER, value = "%02d")})
 	private String candidateId;
 	@Column(nullable=false)
 	private String firstName;
