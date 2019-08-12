@@ -54,7 +54,6 @@ public class LeavesDaoImp implements LeavesDao {
 		Transaction tr=session.beginTransaction();
 		leaves=(List<Leaves>)session.createCriteria(Leaves.class).list();
 		tr.commit();
-		session.close();
 		return leaves;
 	}
 
@@ -65,7 +64,6 @@ public class LeavesDaoImp implements LeavesDao {
 		Transaction tr=session.beginTransaction();
 		Leaves leaves=(Leaves)session.createCriteria(Leaves.class).add(Restrictions.eq("leaveId",leaveId));
 		tr.commit();
-		session.close();
 		return leaves;
 	}
 

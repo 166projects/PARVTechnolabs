@@ -1,4 +1,4 @@
-package com.parv.izdoo.entities;
+	package com.parv.izdoo.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,6 +13,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 
 @Entity
@@ -33,6 +36,8 @@ public class Leaves implements Serializable{
 	private Employer employer;
 
 	@Column(nullable=false)
+	//@JsonSerialize(using=JsonDateSerializer.class)
+	@JsonFormat(pattern="dd-MMM-yy")
 	private Date leaveDate;
 	private String reason;
 	@Column(nullable=false)
@@ -67,10 +72,6 @@ public class Leaves implements Serializable{
 	public void setLeaveApproval(String leaveApproval) {
 		this.leaveApproval = leaveApproval;
 	}
-	@Override
-	public String toString() {
-		return "Leaves [leaveId=" + leaveId + ", employer=" + employer + ", leaveDate=" + leaveDate + ", reason="
-				+ reason + ", leaveApproval=" + leaveApproval + "]";
-	}
+	
 	
 }

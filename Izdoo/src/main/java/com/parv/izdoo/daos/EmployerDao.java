@@ -8,5 +8,6 @@ public interface EmployerDao {
 	public void updateEmployer(Employer employer);
 	public List<Employer> getAll();
 	public Employer getById(String employerId);
+	public void addEmployer(Employer employer);
 
 }
