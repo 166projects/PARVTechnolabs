@@ -61,8 +61,9 @@ public class CandidateDaoImp implements CandidateDao{
         {
       	  throw new Exception("invalid Credentials");
         }
-    	session.close();
-        return candidates;
+           session.close();
+           return candidates;
+           
  }
 
 	public List<Candidate> getAllEligibleCandidates() {
@@ -76,12 +77,7 @@ public class CandidateDaoImp implements CandidateDao{
 		Session session = sessionFactory.openSession();
 		Candidate candidate = (Candidate) session.get(Candidate.class, candidateId);
 		return candidate;
-	}
-		
-		
-		
-		
-		
+	}	
 	}
 
 

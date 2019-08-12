@@ -1,10 +1,6 @@
 package com.parv.izdoo.controllers;
 
 
-
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -50,13 +46,13 @@ public class CandidateControllers {
 		
 	}
 	
-	@RequestMapping(value="/login/{email}/{password}",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value="/login",method=RequestMethod.PUT,produces=MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Void> login(@PathVariable("email") String email,@PathVariable("password") String password){
+    public ResponseEntity<Void> login(@RequestBody Candidate candidates){
 
            try {
-
-        	   candidateBo.login(email, password);
+               
+        	   candidateBo.login(candidates.getEmail(), candidates.getPassword());
 
            } catch (Exception e) {
 
