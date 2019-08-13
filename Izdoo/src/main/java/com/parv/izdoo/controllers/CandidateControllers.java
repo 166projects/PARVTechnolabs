@@ -33,10 +33,10 @@ public class CandidateControllers {
 	InterviewScheduleBo interviewScheduleBo;
 	
 	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String loginPage() {
-		return "login";
-	}
+//	@RequestMapping(value="/login",method=RequestMethod.GET)
+//	public String loginPage() {
+//		return "login";
+	
 
 	@RequestMapping(value="/add",method=RequestMethod.POST,produces=MediaType.APPLICATION_JSON_VALUE)
 	public void signupCandidate(@RequestBody Candidate candidates) {
