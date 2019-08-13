@@ -23,4 +23,10 @@ public class EmployerBoImp implements EmployerBo {
 		return employerdao.getById(employerId);
 	}
 
+	@Override
+	public void addEmployer(Employer employer) {
+		employerdao.addEmployer(employer);
+		
+	}
+
 }

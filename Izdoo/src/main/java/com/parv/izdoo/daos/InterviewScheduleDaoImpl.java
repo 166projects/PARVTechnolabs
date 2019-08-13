@@ -2,16 +2,17 @@ package com.parv.izdoo.daos;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.parv.izdoo.entities.Candidate;
 import com.parv.izdoo.entities.InterviewSchedule;
 
 @Repository
+//@org.springframework.transaction.annotation.Transactional
 public class InterviewScheduleDaoImpl implements InterviewScheduleDao {
 
 	@Autowired
@@ -39,8 +40,14 @@ public class InterviewScheduleDaoImpl implements InterviewScheduleDao {
 
 	public List<InterviewSchedule> getInterviewByType(String interviewType) {
 		Session session = sessionFactory.openSession();
-		List<InterviewSchedule> interviewSchedules = 
-									(List<InterviewSchedule>) session.get(InterviewSchedule.class, interviewType);
+
+		Transaction tr = session.beginTransaction();
+		
+		Query q=session.createQuery("from InterviewSchedule where interviewType=:interviewType");
+		q.setString("interviewType", interviewType);
+		List<InterviewSchedule> interviewSchedules = q.list();
+		
+		tr.commit();
 		
 		return interviewSchedules;
 	}
@@ -53,17 +60,26 @@ public class InterviewScheduleDaoImpl implements InterviewScheduleDao {
 	
 	public List<InterviewSchedule> getByCandidateId(String candidateId){
 
-		Session session = sessionFactory.openSession();
-		List<InterviewSchedule> interviewSchedules =
-										(List<InterviewSchedule>) session.get(InterviewSchedule.class, candidateId);
+		Session session = sessionFactory.getCurrentSession();
+		//Transaction tr = session.beginTransaction();
+		Query q=session.createQuery("from InterviewSchedule where candidate_candidateid=:candidateid");
+		q.setString("candidateid", candidateId);
+		List<InterviewSchedule> interviewSchedules = q.list();
+		
+		//(List<InterviewSchedule>) session.get(InterviewSchedule.class, candidateId);
+		//tr.commit();
+		
 		return interviewSchedules;
 	}
 	
 	public List<InterviewSchedule> getAllInterviewSchedules() {
 		Session session=sessionFactory.openSession();
+		Transaction tr = session.beginTransaction();
 		List<InterviewSchedule> interviewSchedules = session.createCriteria(InterviewSchedule.class).list();
+		tr.commit();
 		session.close();
 		return interviewSchedules;
+		
 	}
 
 }

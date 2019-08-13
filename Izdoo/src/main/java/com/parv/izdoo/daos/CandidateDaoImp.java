@@ -2,16 +2,16 @@ package com.parv.izdoo.daos;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.parv.izdoo.entities.Candidate;
+
 @Repository
 @Transactional
 public class CandidateDaoImp implements CandidateDao{
@@ -19,6 +19,8 @@ public class CandidateDaoImp implements CandidateDao{
 	 @Autowired
 	 SessionFactory sessionFactory;
 	 
+//	 Session session=sessionFactory.openSession();;
+	
 	 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -32,17 +34,20 @@ public class CandidateDaoImp implements CandidateDao{
 	}
 
 	public void updateCandidate(Candidate candidate) {
-		Session session=sessionFactory.openSession();
-	
+		Session session=sessionFactory.getCurrentSession();
+		Transaction tr = session.beginTransaction();
+		
 		session.update(candidate);
-		session.close();
+		tr.commit();
+		//session.close();
 	}
 
 	public void signupCandidate(Candidate candidate) {
 	
 		Session session=sessionFactory.openSession();
-		
+		Transaction tr = session.beginTransaction();
 		session.save(candidate);
+		tr.commit(); 
 		session.close();
 		
 	}
@@ -61,8 +66,9 @@ public class CandidateDaoImp implements CandidateDao{
         {
       	  throw new Exception("invalid Credentials");
         }
-    	session.close();
-        return candidates;
+           session.close();
+           return candidates;
+           
  }
 
 	public List<Candidate> getAllEligibleCandidates() {
@@ -73,15 +79,10 @@ public class CandidateDaoImp implements CandidateDao{
 	}
 
 	public Candidate getById(String candidateId) {
-		Session session = sessionFactory.openSession();
+		Session session = sessionFactory.getCurrentSession();
 		Candidate candidate = (Candidate) session.get(Candidate.class, candidateId);
 		return candidate;
-	}
-		
-		
-		
-		
-		
+	}	
 	}
 
 
