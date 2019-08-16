@@ -1,0 +1,25 @@
+<h3>Apply for Leave</h3>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <form #addleaves (ngSubmit)="addLeave()">
+      <div class="form-group">
+        <label for="leaveDate">Leave Date</label>
+        <input type="date" name="leaveDate" id="leaveDate" class="form-control" [(ngModel)]="leave.leaveDate"
+         [ngModel] ="leave.leaveDate | date:'dd-MMM-yy'"
+      >
+      </div>
+
+      <div class="form-group">
+        <label for="reason">Reason</label>
+        <input type="text" name="reason" id="reason" class="form-control" [(ngModel)]="leave.reason">
+      </div>
+
+      <div class="form-group">
+        <label for="employer">Employer ID</label>
+        <input type="text" name="employer_id" id="employer_id" class="form-control" [(ngModel)]="emp_id">
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

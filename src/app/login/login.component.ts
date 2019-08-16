@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginSignupService } from '../login-signup.service';
-
-import { first } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { Candidate } from '../candidate';
+import { User } from '../user';
+import { LoginSignupServiceService } from 'login-signup-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Employer } from '../employer';
 
 @Component({
   selector: 'app-login',
@@ -14,30 +11,32 @@ import { Candidate } from '../candidate';
 })
 export class LoginComponent implements OnInit {
 
-  
-  email:string;
-  cpassword :string;
-  candidate: Candidate;
+  serialNumber: number;
+  userType: string;
+  loginStatus: string;
+  password: string;
+  employer: Employer;
+  user: User;
+  id: string;
   returnUrl: string;
- isLoadingResults = true;
-  
+  isLoadingResults = true;
+
   ngOnInit() {
   }
-  constructor(private loginSignupServiceService: LoginSignupService, private route: ActivatedRoute, private router: Router,
+  constructor(private loginSignupServiceService: LoginSignupServiceService, private route: ActivatedRoute, private router: Router,
   ) {
 
-   }
-   
-   login():void {
-     this.loginSignupServiceService.login(this.email,this.cpassword)
-    .subscribe((data: any) => {
-      this.candidate = data;
-      console.log(this.candidate);
-      this.isLoadingResults = false;
-      
-    });
-console.log();  
-   }
-}
+  }
 
+  login(): void {
+    this.loginSignupServiceService.login(this.id, this.password)
+      .subscribe((data: any) => {
+        this.user = data;
+        console.log(this.user);
+        this.isLoadingResults = false;
+
+      });
+    console.log();
+  }
+}
 
